@@ -36,6 +36,8 @@ Users simply:
 
 The automation extracts resume content, compares it against the job description using **Google Gemini AI**, and generates a professional, personalized cover letter. The completed cover letter is then delivered directly to the user's email—all within seconds.
 
+Live website @ Gamma AI --> https://precision-cover-letter-49qbjih.gamma.site/
+
 ---
 
 # 🚀 Live Workflow
