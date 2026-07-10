@@ -1,171 +1,246 @@
-AI Cover Letter Generator (n8n + Gemini + Adobe PDF Services)
+# 🤖 AI Cover Letter Automation
 
-Generate personalized, ATS-friendly cover letters automatically using AI.
+> Generate personalized, ATS-friendly cover letters automatically using AI, workflow automation, and cloud deployment.
 
-This project automates the process of creating tailored cover letters by combining a candidate's resume with a target job description. Users simply upload their resume, paste a job description, and receive a customized cover letter via email within minutes.
+![n8n](https://img.shields.io/badge/n8n-Automation-EA4B71?style=for-the-badge)
+![Gemini](https://img.shields.io/badge/Google-Gemini-blue?style=for-the-badge)
+![Railway](https://img.shields.io/badge/Hosted-Railway-purple?style=for-the-badge)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-Architecture
+---
 
-Workflow Diagram
+## 📖 Overview
 
-```text
-User
- │
- ▼
-Landing Page (Tally)
- │
- ▼
-Railway
- │
- ▼
+Applying for jobs can be repetitive and time-consuming, especially when writing a new cover letter for every application.
+
+This project automates the entire process.
+
+Users simply:
+
+✅ Enter their name
+
+✅ Enter their email
+
+✅ Paste a Job Description
+
+✅ Upload their Resume (PDF)
+
+The automation extracts resume content, compares it against the job description using **Google Gemini AI**, and generates a professional, personalized cover letter. The completed cover letter is then delivered directly to the user's email—all within seconds.
+
+---
+
+# 🚀 Live Workflow
+
+```
+Tally Form
+     │
+     ▼
 n8n Webhook
- │
- ▼
-Adobe PDF Services API
- │
- ▼
+     │
+     ▼
+Adobe PDF Services
+     │
 Extract Resume Text
- │
- ▼
+     │
+     ▼
 Google Gemini AI
- │
- ▼
-Generate Tailored Cover Letter
- │
- ▼
+     │
+Generate Cover Letter
+     │
+     ▼
 Gmail API
- │
- ▼
-User receives Cover Letter
+     │
+     ▼
+Delivered to User
 ```
 
+---
 
-![Architecture](aws-cloudopsmonitoring-architecture.png)
+# ☁️ Cloud Deployment
 
+This solution is fully deployed on **Railway**.
 
+```
+                Railway Cloud
+        ┌─────────────────────────┐
+        │      n8n Workflow       │
+        │                         │
+        │ • Webhook               │
+        │ • AI Automation         │
+        │ • API Integrations      │
+        └──────────┬──────────────┘
+                   │
+        ┌──────────▼──────────────┐
+        │     PostgreSQL          │
+        │                         │
+        │ Workflow Database       │
+        │ Credentials             │
+        │ Execution History       │
+        └─────────────────────────┘
+```
 
-##Features
+---
 
-Upload resume as PDF
-Paste any job description
-Automatically extracts resume text using Adobe PDF Services API
-Uses Google Gemini AI to generate personalized cover letters
-Sends generated cover letter directly to the user's email
-Fully automated using n8n
-Hosted on Railway
+# ✨ Features
 
-##Tech Stack
+- 📄 Resume PDF upload
+- 📝 Job Description input
+- 🤖 AI-generated personalized cover letters
+- 📚 Resume text extraction using Adobe PDF Services API
+- 📧 Automatic email delivery
+- ⚡ Fully automated n8n workflow
+- ☁️ Cloud-hosted on Railway
+- 💾 Persistent PostgreSQL storage
 
-| Technology             | Purpose                    |
-| ---------------------- | -------------------------- |
-| n8n                    | Workflow Automation        |
-| Google Gemini          | AI Cover Letter Generation |
-| Adobe PDF Services API | Resume Text Extraction     |
-| Gmail API              | Email Delivery             |
-| Tally Forms            | User Input Form            |
-| Railway                | Workflow Hosting           |
+---
 
+# 🛠️ Technology Stack
 
+| Category | Technology |
+|----------|------------|
+| Workflow Automation | n8n |
+| AI | Google Gemini |
+| PDF Processing | Adobe PDF Services API |
+| Form | Tally |
+| Email | Gmail API |
+| Hosting | Railway |
+| Database | PostgreSQL |
 
-##Workflow
+---
 
-1. User Submission
+# 🔄 End-to-End Process
 
-The user fills out the landing page with:
+### 1️⃣ User Submission
 
-Name
-Email
-Target Job Description
-Resume (PDF)
+The user fills out a Tally form with:
 
-2. Webhook Trigger
+- Name
+- Email
+- Target Job Description
+- Resume (PDF)
 
-The Tally form sends the submission to an n8n Webhook which starts the automation.
+---
 
-3. Resume Processing
+### 2️⃣ Workflow Trigger
 
-The workflow:
+The Tally form sends the submission to an n8n Webhook hosted on Railway.
 
-Authenticates with Adobe PDF Services
-Uploads the PDF
-Extracts all resume text
-Downloads extracted JSON
+---
 
-4. AI Generation
+### 3️⃣ Resume Processing
+
+The workflow automatically:
+
+- Authenticates with Adobe PDF Services
+- Uploads the PDF
+- Extracts resume text
+- Downloads structured JSON content
+
+---
+
+### 4️⃣ AI Generation
 
 Google Gemini receives:
 
-Resume content
-Job description
+- Resume content
+- Job description
 
-The AI is instructed to:
+The AI then creates a tailored cover letter while following strict prompt engineering rules:
 
-Never invent experience
-Never invent certifications
-Never invent projects
-Preserve factual information
-Improve grammar
-Improve wording
-Produce a professional cover letter
+- Never invent experience
+- Never invent projects
+- Never invent certifications
+- Preserve factual information
+- Improve grammar
+- Improve readability
+- Optimize for ATS
 
-5. Email Delivery
+---
 
-The generated cover letter is emailed directly to the candidate using Gmail.
+### 5️⃣ Email Delivery
 
-##AI Prompt Strategy
+The finished cover letter is sent directly to the user's inbox using Gmail.
 
-The workflow compares:
+---
 
-Candidate Resume
-Target Job Description
+# 📂 Repository Structure
 
-The AI then generates a cover letter that:
+```
+ai-cover-letter-automation/
 
-Matches relevant skills
-Highlights transferable experience
-Uses professional language
-Maintains factual accuracy
-Optimizes readability for ATS systems
+├── README.md
+├── workflow.json
+│
+├── assets/
+│   ├── architecture.png
+│   ├── railway.png
+│   ├── workflow.png
+│   └── landing-page.png
+│
+└── screenshots/
+    ├── workflow.png
+    ├── email.png
+    ├── form.png
+    └── output.png
+```
 
-##Deployment
+---
 
-The automation is deployed on Railway, where the n8n application runs as a managed service backed by a persistent PostgreSQL database.
+# 📸 Screenshots
 
-Infrastructure
-Railway Cloud Platform
-n8n (Production Instance)
-PostgreSQL Database
-HTTPS Webhook Endpoint
-Persistent Workflow Storage
-Automatic Restarts & Deployment
+## Landing Page
 
-This architecture enables reliable execution, secure credential storage, and persistent workflow history while minimizing infrastructure management.
+> *(Add screenshot)*
 
+---
 
-##Future Improvements
-Support DOCX resumes
-Generate multiple cover letter styles
-Download as PDF
-ATS score analysis
-Resume optimization suggestions
-Multi-language support
+## n8n Workflow
 
-## 💼 Skills Demonstrated
+> *(Add screenshot)*
 
-This project showcases practical skills across automation, cloud deployment, and AI integration:
+---
 
-Workflow Automation (n8n)
-Cloud Deployment (Railway)
-PostgreSQL Database Management
-REST API Integration
-AI Prompt Engineering
-Google Gemini API
-Adobe PDF Services API
-Gmail API Integration
-Webhook Development
-PDF Processing
-JSON Data Transformation
-Low-Code/No-Code Automation
-SaaS Integration
-Production Deployment
-Event-Driven Architecture
+## Railway Deployment
+
+> *(Add screenshot)*
+
+---
+
+## Generated Cover Letter
+
+> *(Add screenshot)*
+
+---
+
+# 🎯 Skills Demonstrated
+
+- Workflow Automation
+- Cloud Deployment
+- API Integration
+- AI Prompt Engineering
+- Event-Driven Architecture
+- REST APIs
+- PDF Processing
+- Email Automation
+- Webhook Development
+- Production Deployment
+- PostgreSQL
+- Low-Code Automation
+
+---
+
+# 💡 Future Improvements
+
+- Multiple writing styles
+- DOCX resume support
+- PDF export
+- ATS scoring
+- Resume improvement suggestions
+- Multi-language support
+
+---
+
+# 📜 License
+
+MIT License
