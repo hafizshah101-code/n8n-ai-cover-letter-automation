@@ -1,4 +1,12 @@
+<p align="center">
+
 # 🤖 AI Cover Letter Automation
+
+Generate AI-powered, ATS-friendly cover letters from resumes and job descriptions using **n8n**, **Google Gemini**, **Adobe PDF Services**, and **Railway Cloud**.
+
+<img src="assets/architecture.png" width="900">
+
+</p>
 
 > Generate personalized, ATS-friendly cover letters automatically using AI, workflow automation, and cloud deployment.
 
